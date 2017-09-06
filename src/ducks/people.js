@@ -38,7 +38,7 @@ export default function reducer(state = new ReducerState(), action) {
           return state
           .set('loading', false)
           .set('loaded', true)
-          .mergeIn(['entities'], fbDatatoEntities(payload, PersonRecord))
+          .set('entities', fbDatatoEntities(payload, PersonRecord))
         case ADD_PERSON:
             return state.update('entities',
                 entities => entities.push(new PersonRecord(payload)))
@@ -76,7 +76,7 @@ export const addPersonSaga = function * (action) {
 
 export const fetchPersonSaga = function * (action) {
   while (true) {
-    yield take(FETCH_REQUEST)
+    yield take(action)
 
     const ref = firebase.database().ref('/users')
 
@@ -103,5 +103,6 @@ export function addPerson(person) {
 */
 
 export const saga = function * () {
-    yield takeEvery(ADD_PERSON_REQUEST, addPersonSaga)
+    yield takeEvery(ADD_PERSON_REQUEST, addPersonSaga),
+    yield takeEvery(FETCH_REQUEST, fetchPersonSaga)
 }

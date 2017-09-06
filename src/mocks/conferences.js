@@ -464,7 +464,7 @@ export default [
         "submissionDeadline": ""
     },
     {
-        "title": "User Experience Lisbon",
+        "title": "user Experience Lisbon",
         "url": "https://www.ux-lx.com/",
         "where": "Lisbon, Portugal",
         "when": "May 23-26, 2017",
@@ -1782,7 +1782,7 @@ export default [
         "submissionDeadline": ""
     },
     {
-        "title": "User Experience Lisbon",
+        "title": "user Experience Lisbon",
         "url": "https://www.ux-lx.com/",
         "where": "Lisbon, Portugal",
         "when": "May 24-27, 2016",
