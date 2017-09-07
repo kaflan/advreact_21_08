@@ -136,9 +136,9 @@ export function signUp(email, password) {
         })
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(user => dispatch({
+            .then(users => dispatch({
                 type: SIGN_UP_SUCCESS,
-                payload: {user}
+                payload: {users}
             }))
             .catch(error => dispatch({
                 type: SIGN_UP_ERROR,
@@ -161,11 +161,11 @@ export const watchStatusChange = function * () {
 }
 
 /*
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(users => {
     const store = require('../redux').default
     store.dispatch({
         type: SIGN_IN_SUCCESS,
-        payload: {user}
+        payload: {users}
     })
 })
 
