@@ -55,15 +55,14 @@ export function addPerson(person) {
 }
 
 export const addPersonSaga = function * (action) {
-    const id = yield call(generateId)
-    const ref = firebase.database().ref('/users')
+    const ref = firebase.database().ref('people')
 
-    const data = yield call([ref, ref.once], ref.push({...action.payload, id}))
+    const data = yield call([ref, ref.push], action.payload)
 
     try {
       yield put({
         type: ADD_PERSON,
-        payload: data.val()
+        payload: {...action.payload, uid: data.key}
       })
       yield put(reset('person'))
     } catch (error) {
